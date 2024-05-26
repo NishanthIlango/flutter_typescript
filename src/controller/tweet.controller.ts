@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getTweetRepo, createTweetRepo,updateTweetRepo,deleteTweetRepo} from "../repositories/tweet.repositories";
+import { getTweetRepo, createTweetRepo,updateTweetRepo,deleteTweetRepo, getAllTweetsRepo} from "../repositories/tweet.repositories";
 import { updateUserWithTweetRep } from "../repositories/user.repositories";
 import { ITweetInterface } from "../database/interfaces/tweet.interface";
 
@@ -19,19 +19,19 @@ export const getTweetController = async (req: Request, res: Response) => {
   }
 };
 
-// export const getAllTweetsController = async (req: Request, res: Response) => {
-//   try {
-//     const tweets = await getAllTweetsRepo();
-//     if (tweets) {
-//       res.status(200).json({ data: tweets });
-//     } else {
-//       res.status(500).json({ error: "Tweets Not Found" });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: error });
-//   }
-// };
+export const getAllTweetsController = async (req: Request, res: Response) => {
+  try {
+    const tweets = await getAllTweetsRepo();
+    if (tweets) {
+      res.status(200).json({ data: tweets });
+    } else {
+      res.status(500).json({ error: "Tweets Not Found" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error });
+  }
+};
 
 export const createTweetController = async (req: Request, res: Response) => {
   const tweet: ITweetInterface = req.body;
