@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUserWithTweetRep = exports.updateUserRepo = exports.createUserRepo = exports.deleteUserRepo = exports.getUserRepo = void 0;
+exports.updateUserWithTweetIdRepo = exports.updateUserRepo = exports.createUserRepo = exports.deleteUserRepo = exports.getUserRepo = void 0;
 const user_model_1 = __importDefault(require("../database/models/user.model"));
 const getUserRepo = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -68,7 +68,7 @@ const updateUserRepo = (userId, updatedUser) => __awaiter(void 0, void 0, void 0
     }
 });
 exports.updateUserRepo = updateUserRepo;
-const updateUserWithTweetRep = (userId, tweetId) => __awaiter(void 0, void 0, void 0, function* () {
+const updateUserWithTweetIdRepo = (userId, tweetId) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield user_model_1.default.findOneAndUpdate({ uid: userId }, { $push: { tweets: tweetId } });
         if (result) {
@@ -83,4 +83,4 @@ const updateUserWithTweetRep = (userId, tweetId) => __awaiter(void 0, void 0, vo
         return false;
     }
 });
-exports.updateUserWithTweetRep = updateUserWithTweetRep;
+exports.updateUserWithTweetIdRepo = updateUserWithTweetIdRepo;

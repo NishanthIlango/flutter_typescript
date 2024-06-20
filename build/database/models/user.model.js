@@ -29,8 +29,11 @@ const userSchema = new mongoose_1.Schema({
     tweets: { type: [String], default: [] },
     firstName: { type: String, default: "User" },
     lastName: { type: String, default: "Name" },
-    email: { type: String, required: true },
-    createdAt: { type: String, required: true },
+    email: {
+        type: String,
+        required: true,
+        createdAt: { type: String, required: true },
+    },
 });
-const UserModel = mongoose_1.default.model('UserModel', userSchema);
+const UserModel = mongoose_1.default.model("UserModel", userSchema);
 exports.default = UserModel;

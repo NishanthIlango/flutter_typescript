@@ -50,7 +50,7 @@ const createTweetController = (req, res) => __awaiter(void 0, void 0, void 0, fu
     try {
         const success = yield (0, tweet_repositories_1.createTweetRepo)(tweet);
         if (success) {
-            const userUpdateSuccess = yield (0, user_repositories_1.updateUserWithTweetRep)(tweet.adminId, tweet.tweetId);
+            const userUpdateSuccess = yield (0, user_repositories_1.updateUserWithTweetIdRepo)(tweet.adminId, tweet.tweetId);
             if (userUpdateSuccess) {
                 res.status(200).json({ data: tweet });
             }
