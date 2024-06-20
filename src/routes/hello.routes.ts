@@ -1,9 +1,12 @@
-import { Router,Request,Response} from "express";
+import { Router, Request, Response } from "express";
 
-const helloRouter=Router();
+const helloRouter = Router();
 
-helloRouter.get("/",(req:Request,res:Response)=>{
-    res.json({"data":"Server is Live!!"});
+// Define route paths
+
+helloRouter.get("/", (req: Request, res: Response) => {
+  res.json({"data" : "Server is Live"})
 });
 
-export default helloRouter;
+
+export default helloRouter

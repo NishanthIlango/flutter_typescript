@@ -1,6 +1,13 @@
 import { Request, Response } from "express";
-import { getTweetRepo, createTweetRepo,updateTweetRepo,deleteTweetRepo, getAllTweetsRepo} from "../repositories/tweet.repositories";
-import { updateUserWithTweetRep } from "../repositories/user.repositories";
+import {
+  getTweetRepo,
+  createTweetRepo,
+  deleteTweetRepo,
+  updateTweetRepo,
+  getAllTweetsRepo,
+} from "../repositories/tweet.repositories";
+
+import { updateUserWithTweetIdRepo } from "../repositories/user.repositories";
 import { ITweetInterface } from "../database/interfaces/tweet.interface";
 
 export const getTweetController = async (req: Request, res: Response) => {
@@ -39,7 +46,7 @@ export const createTweetController = async (req: Request, res: Response) => {
   try {
     const success = await createTweetRepo(tweet);
     if (success) {
-      const userUpdateSuccess = await updateUserWithTweetRep(
+      const userUpdateSuccess = await updateUserWithTweetIdRepo(
         tweet.adminId,
         tweet.tweetId
       );

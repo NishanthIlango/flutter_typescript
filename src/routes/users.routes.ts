@@ -1,11 +1,14 @@
- import { Router } from "express";
- import { getUserController,createUserController,updateUserController,deleteUserController } from "../controller/user.controller";
+import { Router } from "express";
+import { getUserController, createUserController, deleteUserController, updateUserController } from "../controller/user.controller";
 
- const userRouter=Router();
+const userRouter = Router();
 
- userRouter.get("/:userId",getUserController);
- userRouter.post("/",createUserController);
- userRouter.delete("/:userId",deleteUserController);
- userRouter.put("/",updateUserController);
 
- export default userRouter;
+// Define route paths
+
+userRouter.get("/:userId", getUserController)
+userRouter.post("/", createUserController)
+userRouter.delete("/:userId", deleteUserController)
+userRouter.put("/", updateUserController)
+
+export default userRouter
