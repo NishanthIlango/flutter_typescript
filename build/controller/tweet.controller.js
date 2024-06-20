@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTweetController = exports.updateTweetController = exports.createTweetController = exports.getTweetController = void 0;
+exports.deleteTweetController = exports.updateTweetController = exports.createTweetController = exports.getAllTweetsController = exports.getTweetController = void 0;
 const tweet_repositories_1 = require("../repositories/tweet.repositories");
 const user_repositories_1 = require("../repositories/user.repositories");
 const getTweetController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -29,19 +29,22 @@ const getTweetController = (req, res) => __awaiter(void 0, void 0, void 0, funct
     }
 });
 exports.getTweetController = getTweetController;
-// export const getAllTweetsController = async (req: Request, res: Response) => {
-//   try {
-//     const tweets = await getAllTweetsRepo();
-//     if (tweets) {
-//       res.status(200).json({ data: tweets });
-//     } else {
-//       res.status(500).json({ error: "Tweets Not Found" });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: error });
-//   }
-// };
+const getAllTweetsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const tweets = yield (0, tweet_repositories_1.getAllTweetsRepo)();
+        if (tweets) {
+            res.status(200).json({ data: tweets });
+        }
+        else {
+            res.status(500).json({ error: "Tweets Not Found" });
+        }
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error });
+    }
+});
+exports.getAllTweetsController = getAllTweetsController;
 const createTweetController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const tweet = req.body;
     try {
